@@ -29,8 +29,9 @@ namespace Kolokwium1.Services
                    IdTeam = t.IdTeam,
                    Tasks = t.Tasks
                    .Where(e => e.IdTeam == t.IdTeam)
-                   .Select(e => new TaskDTO { Name = e.Name, Deadline = e.Deadline, Description = e.Description, TaskType = new TaskTypeDTO { Name = "a" } })
+                   .Select(e => new TaskDTO { Name = e.Name, Deadline = e.Deadline, Description = e.Description, TaskType = new TaskTypeDTO { Name = e.TaskType.Name}})
                    .OrderByDescending(e => e.Deadline)
+                   .ToList()
 
                }).SingleOrDefaultAsync();
 

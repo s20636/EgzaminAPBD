@@ -16,9 +16,9 @@ namespace Kolokwium1.Controllers
         }
 
         [HttpGet("{idProject}")]
-        public async Task<IActionResult> GetProject(int IdProject)
+        public async Task<IActionResult> GetProject(int idProject)
         {
-            var project = await _service.GetProject(IdProject);
+            var project = await _service.GetProject(idProject);
             if (project == null)
             { return BadRequest("Project not found"); }
             return Ok(project);
