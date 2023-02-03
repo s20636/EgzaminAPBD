@@ -28,12 +28,12 @@ namespace Kolokwium1.Services
                    Name = t.Name,
                    IdTeam = t.IdTeam,
                    Tasks = t.Tasks
-                   .Select(e => new TaskDTO {Name = e.Name, Deadline=e.Deadline, Description=e.Description, TaskType = new TaskTypeDTO {Name=e.TaskType.Name } })
+                   .Where(e => e.IdTeam == t.IdTeam)
+                   .Select(e => new TaskDTO { Name = e.Name, Deadline = e.Deadline, Description = e.Description, TaskType = new TaskTypeDTO { Name = "a" } })
                    .OrderByDescending(e => e.Deadline)
 
-               }).SingleAsync();
-                
-            throw new NotImplementedException();
+               }).SingleOrDefaultAsync();
+
         }
     }
 }

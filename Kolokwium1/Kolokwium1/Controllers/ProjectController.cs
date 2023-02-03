@@ -19,11 +19,16 @@ namespace Kolokwium1.Controllers
         public async Task<IActionResult> GetProject(int IdProject)
         {
             var project = await _service.GetProject(IdProject);
-            if (project != null)
-            {
-                return Ok(project);
-            }
-            return BadRequest("Project not Found");
+            if (project == null)
+            { return BadRequest("Project not found"); }
+            return Ok(project);
         }
+/*
+        [HttpPost]
+        public Task AddTask(TaskDTO task)
+        {
+            
+        }
+*/
     }
 }
